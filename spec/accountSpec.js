@@ -40,7 +40,7 @@ describe('Account class', function () {
     it('adds an instance of transaction to the transaction history', function () {
       myAccount;
       myAccount.deposit(500);
-      myAccount.withdraw(500);
+      myAccount.withdraw(250);
       expect(myAccount.getTransactionHistory().length).toEqual(2);
       expect(myAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
     });
@@ -56,26 +56,48 @@ describe('Account class', function () {
   });
 
   describe('printStatement method', function () {
-    it('includes the transaction date', function () {
+    it('shows the transaction date', function () {
       myAccount;
       myAccount.deposit(500);
       let date = myAccount.getTransactionHistory()[0].getDate();
       expect(myAccount.printStatement()).toContain(date);
     });
 
-    it('shows the transaction amount when depositing', function () {
+    it('shows deposited amount', function () {
       myAccount;
       myAccount.deposit(500);
-      expect(myAccount.printStatement()).toContain(500);
+      expect(myAccount.printStatement()).toContain('500');
     });
 
-    it('shows the transaction amount when withdrawing', function () {
+    it('shows withdrawn amount', function () {
       myAccount;
       myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toContain('12/1/2021 || || 250 ||');
+      expect(myAccount.printStatement()).toContain('250');
     });
 
-    it('',);
+    it('shows remaining balance after amount is deposited', function () {
+      myAccount;
+      myAccount.deposit(500);
+      expect(myAccount.printStatement()).toContain(myAccount.getBalance());
+    });
+
+    it('shows remaining balance after amount is withdrawn', function () {
+      myAccount;
+      myAccount.withdraw(250);
+      expect(myAccount.printStatement()).toContain(myAccount.getBalance());
+    });
+
+    it('outputs all the data of a deposit transaction in the correct format', function () {
+      myAccount;
+      myAccount.deposit(500);
+      expect(myAccount.printStatement()).toEqual('12/1/2021 || 500 || || 500' );
+    });
+
+    it('outputs all the data of a withdrawal transaction in the correct format', function () {
+      myAccount;
+      myAccount.withdraw(250);
+      expect(myAccount.printStatement()).toEqual('12/1/2021 || || 250 || -250');
+    });
 
 
   });

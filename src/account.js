@@ -29,9 +29,9 @@ class Account {
   printStatement() {
 
     if (this.getTransactionHistory()[0].getType() === 'credit') {
-      return this.getTransactionHistory()[0].getDate() + ' ||' + this.getTransactionHistory()[0].getAmount() + '|| ' + ' ' + ' || '
+      return this.getTransactionHistory()[0].getDate() + ' || ' + this.getTransactionHistory()[0].getAmount() + ' ||' + ' ' + '|| ' + this.getBalance()
     } else if (this.getTransactionHistory()[0].getType() === 'debit') {
-      return this.getTransactionHistory()[0].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[0].getAmount() + ' || '
+      return this.getTransactionHistory()[0].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[0].getAmount() + ' || ' + this.getBalance();
     }
 
   }
