@@ -4,11 +4,21 @@ class Transaction {
 
   constructor() {
     this.date = new Date();
+    this.type = ''
+    this.amount = 0
 
   }
 
   getDate() {
     return this.#outputDate();
+  }
+
+  getType() {
+    return this.type;
+  }
+
+  getAmount() {
+    return this.amount;
   }
 
   #outputDate() {

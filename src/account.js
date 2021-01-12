@@ -18,22 +18,41 @@ class Account {
 
   deposit(amount) {
     this.balance += amount;
-    this.#addTransactionToHistory();
+    this.#addCreditTransToHistory(amount);
   }
 
   withdraw(amount) {
     this.balance -= amount;
-    this.#addTransactionToHistory();
+    this.#addwithdrawalTransToHistory(amount);
   }
 
   printStatement() {
-    return this.getTransactionHistory()[0].getDate();
+    let creditAmount = 0;
+    let debitAmount = 0;
+    for (let trans of this.getTransactionHistory()) {
+      if (trans.getType() === 'credit') {
+        creditAmount = trans.getAmount();
+        debitAmount = ' ';
+      } else if (trans.getType() === 'debit') {
+        creditAmount = ' ';
+        debitAmount = trans.getAmount();
+      }
+    return trans.getDate() + ' ||' + creditAmount + '|| ' + debitAmount + ' || '
+    }
   }
 
-  #addTransactionToHistory() {
+  #addCreditTransToHistory (amount) {
     let depositTransaction = new Transaction();
+    depositTransaction.type = 'credit';
+    depositTransaction.amount = amount;
     return this.transactionHistory.push(depositTransaction);
   }
 
+  #addwithdrawalTransToHistory(amount) {
+    let withdrawTransaction = new Transaction();
+    withdrawTransaction.type = 'debit';
+    withdrawTransaction.amount = amount;
+    return this.transactionHistory.push(withdrawTransaction);
+  }
 
 }

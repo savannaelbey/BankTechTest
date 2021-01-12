@@ -21,6 +21,12 @@ describe('Account class', function () {
       expect(myAccount.getTransactionHistory().length).toEqual(1);
       expect(myAccount.getTransactionHistory()[0]).toBeInstanceOf(Transaction);
     });
+
+    it("changes the type of the transaction instance to 'credit'", function () {
+      myAccount;
+      myAccount.deposit(500);
+      expect(myAccount.getTransactionHistory()[0].getType()).toEqual('credit');
+    });
   });
 
   describe('withdraw(amount) method', function () {
@@ -38,6 +44,15 @@ describe('Account class', function () {
       expect(myAccount.getTransactionHistory().length).toEqual(2);
       expect(myAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
     });
+
+    it("changes the type of the transaction instance to 'debit'", function () {
+      myAccount;
+      myAccount.deposit(500);
+      myAccount.withdraw(250);
+      expect(myAccount.getTransactionHistory()[1].getType()).toEqual('debit');
+    });
+
+
   });
 
   describe('printStatement method', function () {
@@ -45,10 +60,22 @@ describe('Account class', function () {
       myAccount;
       myAccount.deposit(500);
       let date = myAccount.getTransactionHistory()[0].getDate();
-      expect(myAccount.printStatement()).toEqual(date);
+      expect(myAccount.printStatement()).toContain(date);
     });
 
-    
+    it('shows the transaction amount when depositing', function () {
+      myAccount;
+      myAccount.deposit(500);
+      expect(myAccount.printStatement()).toContain(500);
+    });
+
+    it('shows the transaction amount when withdrawing', function () {
+      myAccount;
+      myAccount.withdraw(250);
+      expect(myAccount.printStatement()).toContain('12/1/2021 || || 250 ||');
+    });
+
+
   });
 
 

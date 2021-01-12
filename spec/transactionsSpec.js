@@ -13,4 +13,9 @@ describe('Transaction', function () {
       expect(myTrans.getDate()).toEqual('12/1/2021');
     });
   });
+
+  it('has a transaction type', function() {
+    myTrans;
+    expect(myTrans.getType()).toEqual('')
+  });
 });
