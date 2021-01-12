@@ -23,6 +23,7 @@ class Account {
 
   withdraw(amount) {
     this.balance -= amount;
+    this.#addTransactionToHistory();
   }
 
   #addTransactionToHistory() {
