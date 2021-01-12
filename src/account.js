@@ -2,9 +2,10 @@
 
 class Account {
 
-  constructor(balance = 0, transactionHistory = []) {
-    this.balance = balance;
-    this.transactionHistory = transactionHistory;
+  constructor() {
+    this.STARTING_BALANCE = 0;
+    this.balance = this.STARTING_BALANCE;
+    this.transactionHistory = [];
   }
 
   getBalance() {
