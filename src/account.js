@@ -17,7 +17,13 @@ class Account {
 
   deposit(amount) {
     this.balance += amount;
-    let depositTransaction = new Transaction();
-    this.transactionHistory.push(depositTransaction);
+    this.#addTransactionToHistory();
   }
+
+  #addTransactionToHistory() {
+    let depositTransaction = new Transaction();
+    return this.transactionHistory.push(depositTransaction);
+  }
+
+
 }
