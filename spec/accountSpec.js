@@ -8,7 +8,7 @@ describe('Account class', function () {
   });
 
   describe('deposit(amount) method', function () {
-    it('allows user to deposit money', function () {
+    it('Allows customer to deposit money', function () {
       myAccount;
       myAccount.deposit(500)
       expect(myAccount.getBalance()).toEqual(500);
@@ -21,7 +21,16 @@ describe('Account class', function () {
       expect(myAccount.getTransactionHistory().length).toEqual(1);
       expect(myAccount.getTransactionHistory()[0]).toBeInstanceOf(Transaction);
     });
+  });
 
+  describe('withdraw(amount) method', function () {
+    it('Allows customer to withdraw money', function () {
+      myAccount;
+      myAccount.deposit(500);
+      myAccount.withdraw(250);
+      expect(myAccount.getBalance()).toEqual(250);
+
+    });
   });
 
 

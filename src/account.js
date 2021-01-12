@@ -21,6 +21,10 @@ class Account {
     this.#addTransactionToHistory();
   }
 
+  withdraw(amount) {
+    this.balance -= amount;
+  }
+
   #addTransactionToHistory() {
     let depositTransaction = new Transaction();
     return this.transactionHistory.push(depositTransaction);
