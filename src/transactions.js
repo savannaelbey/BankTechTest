@@ -6,6 +6,7 @@ class Transaction {
     this.date = new Date();
     this.type = ''
     this.amount = 0
+    this.postTransBalance = 0
 
   }
 
@@ -19,6 +20,9 @@ class Transaction {
 
   getAmount() {
     return this.amount;
+  }
+  getPostTransBalance() {
+    return this.postTransBalance;
   }
 
   #outputDate() {

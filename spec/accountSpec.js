@@ -90,14 +90,35 @@ describe('Account class', function () {
     it('outputs all the data of a deposit transaction in the correct format', function () {
       myAccount;
       myAccount.deposit(500);
-      expect(myAccount.printStatement()).toEqual('12/1/2021 || 500 || || 500' );
+      expect(myAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' );
     });
 
     it('outputs all the data of a withdrawal transaction in the correct format', function () {
       myAccount;
       myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toEqual('12/1/2021 || || 250 || -250');
+      expect(myAccount.printStatement()).toContain('12/1/2021 || || 250 || -250');
     });
+
+    it('shows a column header', function () {
+      myAccount;
+      myAccount.deposit(500);
+      expect(myAccount.printStatement()).toContain('date || credit || debit || balance')
+    });
+
+    it('shows the details of each of the transactions in the account transaction history', function() {
+      myAccount;
+      myAccount.deposit(500);
+      myAccount.withdraw(250);
+      expect(myAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250');
+    });
+
+    it('shows the statement in the required format', function () {
+      myAccount;
+      myAccount.deposit(500);
+      myAccount.withdraw(250);
+      myAccount.deposit(500);
+      expect(myAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250' + '\n' + '12/1/2021 || 500 || || 750')
+    })
 
 
   });

@@ -27,19 +27,22 @@ class Account {
   }
 
   printStatement() {
-
-    if (this.getTransactionHistory()[0].getType() === 'credit') {
-      return this.getTransactionHistory()[0].getDate() + ' || ' + this.getTransactionHistory()[0].getAmount() + ' ||' + ' ' + '|| ' + this.getBalance()
-    } else if (this.getTransactionHistory()[0].getType() === 'debit') {
-      return this.getTransactionHistory()[0].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[0].getAmount() + ' || ' + this.getBalance();
+    let output = ['date || credit || debit || balance']
+    for (let i = 0; i < this.transactionHistory.length; i++) {
+      if (this.getTransactionHistory()[i].getType() === 'credit') {
+        output.push(this.getTransactionHistory()[i].getDate() + ' || ' + this.getTransactionHistory()[i].getAmount() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[i].getPostTransBalance());
+      } else if (this.getTransactionHistory()[i].getType() === 'debit') {
+        output.push(this.getTransactionHistory()[i].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[i].getAmount() + ' || ' + this.getTransactionHistory()[i].getPostTransBalance());
+      }
     }
-
+    return output.join('\n');
   }
 
   #addCreditTransToHistory (amount) {
     let depositTransaction = new Transaction();
     depositTransaction.type = 'credit';
     depositTransaction.amount = amount;
+    depositTransaction.postTransBalance = this.balance;
     return this.transactionHistory.push(depositTransaction);
   }
 
@@ -47,7 +50,10 @@ class Account {
     let withdrawTransaction = new Transaction();
     withdrawTransaction.type = 'debit';
     withdrawTransaction.amount = amount;
+    withdrawTransaction.postTransBalance = this.balance;
     return this.transactionHistory.push(withdrawTransaction);
   }
+
+
 
 }
