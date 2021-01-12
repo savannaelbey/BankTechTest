@@ -27,18 +27,13 @@ class Account {
   }
 
   printStatement() {
-    let creditAmount = 0;
-    let debitAmount = 0;
-    for (let trans of this.getTransactionHistory()) {
-      if (trans.getType() === 'credit') {
-        creditAmount = trans.getAmount();
-        debitAmount = ' ';
-      } else if (trans.getType() === 'debit') {
-        creditAmount = ' ';
-        debitAmount = trans.getAmount();
-      }
-    return trans.getDate() + ' ||' + creditAmount + '|| ' + debitAmount + ' || '
+
+    if (this.getTransactionHistory()[0].getType() === 'credit') {
+      return this.getTransactionHistory()[0].getDate() + ' ||' + this.getTransactionHistory()[0].getAmount() + '|| ' + ' ' + ' || '
+    } else if (this.getTransactionHistory()[0].getType() === 'debit') {
+      return this.getTransactionHistory()[0].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[0].getAmount() + ' || '
     }
+
   }
 
   #addCreditTransToHistory (amount) {

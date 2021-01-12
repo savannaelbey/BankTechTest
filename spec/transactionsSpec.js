@@ -14,8 +14,17 @@ describe('Transaction', function () {
     });
   });
 
-  it('has a transaction type', function() {
-    myTrans;
-    expect(myTrans.getType()).toEqual('')
+  describe('getType method', function () {
+    it('shows the transaction type', function () {
+      myTrans;
+      expect(myTrans.getType()).toEqual('')
+    });
+  });
+
+  describe('getAmount method', function () {
+    it('shows the transaction amount', function () {
+      myTrans;
+      expect(myTrans.getAmount()).toEqual(0);
+    });
   });
 });
