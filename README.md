@@ -37,3 +37,12 @@ As a customer,
 I want the date and amount of my transactions as well as the balance to show on my statement,
 So that I can trace back my spending.
 ```
+## Design Approach
+
+## Installing and running the app and tests
+
+## Dependencies
+
+## App screenshots
+
+## Possible extentions
