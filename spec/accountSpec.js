@@ -1,55 +1,57 @@
 'use strict';
 
 describe('Account class', function () {
-  let myAccount;
+  let newAccount;
+  let deposit500Pounds;
 
   beforeEach(function () {
-    myAccount = new Account();
+    newAccount = new Account();
+
   });
 
   describe('deposit(amount) method', function () {
     it('increases the account balance by the amount passed in as an argument', function () {
-      myAccount;
-      myAccount.deposit(500)
-      expect(myAccount.getBalance()).toEqual(500);
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.getBalance()).toEqual(500);
     });
 
     it('adds an instance of transaction to the transaction history', function () {
-      myAccount;
-      expect(myAccount.getTransactionHistory().length).toEqual(0);
-      myAccount.deposit(500);
-      expect(myAccount.getTransactionHistory().length).toEqual(1);
-      expect(myAccount.getTransactionHistory()[0]).toBeInstanceOf(Transaction);
+      newAccount;
+      expect(newAccount.getTransactionHistory().length).toEqual(0);
+      newAccount.deposit(500);
+      expect(newAccount.getTransactionHistory().length).toEqual(1);
+      expect(newAccount.getTransactionHistory()[0]).toBeInstanceOf(Transaction);
     });
 
     it("changes the type of the transaction instance to 'credit'", function () {
-      myAccount;
-      myAccount.deposit(500);
-      expect(myAccount.getTransactionHistory()[0].getType()).toEqual('credit');
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.getTransactionHistory()[0].getType()).toEqual('credit');
     });
   });
 
   describe('withdraw(amount) method', function () {
     it('decreases the account balance by the amount passed in as an argument', function () {
-      myAccount;
-      myAccount.deposit(500);
-      myAccount.withdraw(250);
-      expect(myAccount.getBalance()).toEqual(250);
+      newAccount;
+      newAccount.deposit(500);
+      newAccount.withdraw(250);
+      expect(newAccount.getBalance()).toEqual(250);
     });
 
     it('adds an instance of transaction to the transaction history', function () {
-      myAccount;
-      myAccount.deposit(500);
-      myAccount.withdraw(250);
-      expect(myAccount.getTransactionHistory().length).toEqual(2);
-      expect(myAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
+      newAccount;
+      newAccount.deposit(500);
+      newAccount.withdraw(250);
+      expect(newAccount.getTransactionHistory().length).toEqual(2);
+      expect(newAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
     });
 
     it("changes the type of the transaction instance to 'debit'", function () {
-      myAccount;
-      myAccount.deposit(500);
-      myAccount.withdraw(250);
-      expect(myAccount.getTransactionHistory()[1].getType()).toEqual('debit');
+      newAccount;
+      newAccount.deposit(500);
+      newAccount.withdraw(250);
+      expect(newAccount.getTransactionHistory()[1].getType()).toEqual('debit');
     });
 
 
@@ -57,71 +59,67 @@ describe('Account class', function () {
 
   describe('printStatement method', function () {
     it('shows the transaction date', function () {
-      myAccount;
-      myAccount.deposit(500);
-      let date = myAccount.getTransactionHistory()[0].getDate();
-      expect(myAccount.printStatement()).toContain(date);
+      newAccount;
+      newAccount.deposit(500);
+      let date = newAccount.getTransactionHistory()[0].getDate();
+      expect(newAccount.printStatement()).toContain(date);
     });
 
     it('shows deposited amount', function () {
-      myAccount;
-      myAccount.deposit(500);
-      expect(myAccount.printStatement()).toContain('500');
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.printStatement()).toContain('500');
     });
 
     it('shows withdrawn amount', function () {
-      myAccount;
-      myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toContain('250');
+      newAccount;
+      newAccount.withdraw(250);
+      expect(newAccount.printStatement()).toContain('250');
     });
 
     it('shows remaining balance after amount is deposited', function () {
-      myAccount;
-      myAccount.deposit(500);
-      expect(myAccount.printStatement()).toContain(myAccount.getBalance());
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.printStatement()).toContain(newAccount.getBalance());
     });
 
     it('shows remaining balance after amount is withdrawn', function () {
-      myAccount;
-      myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toContain(myAccount.getBalance());
+      newAccount;
+      newAccount.withdraw(250);
+      expect(newAccount.printStatement()).toContain(newAccount.getBalance());
     });
 
     it('outputs all the data of a deposit transaction in the correct format', function () {
-      myAccount;
-      myAccount.deposit(500);
-      expect(myAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' );
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' );
     });
 
     it('outputs all the data of a withdrawal transaction in the correct format', function () {
-      myAccount;
-      myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toContain('12/1/2021 || || 250 || -250');
+      newAccount;
+      newAccount.withdraw(250);
+      expect(newAccount.printStatement()).toContain('12/1/2021 || || 250 || -250');
     });
 
     it('shows a column header', function () {
-      myAccount;
-      myAccount.deposit(500);
-      expect(myAccount.printStatement()).toContain('date || credit || debit || balance')
+      newAccount;
+      newAccount.deposit(500);
+      expect(newAccount.printStatement()).toContain('date || credit || debit || balance')
     });
 
     it('shows the details of each of the transactions in the account transaction history', function() {
-      myAccount;
-      myAccount.deposit(500);
-      myAccount.withdraw(250);
-      expect(myAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250');
+      newAccount;
+      newAccount.deposit(500);
+      newAccount.withdraw(250);
+      expect(newAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250');
     });
 
     it('shows the statement in the required format', function () {
-      myAccount;
-      myAccount.deposit(500);
-      myAccount.withdraw(250);
-      myAccount.deposit(500);
-      expect(myAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250' + '\n' + '12/1/2021 || 500 || || 750')
+      newAccount;
+      newAccount.deposit(500);
+      newAccount.withdraw(250);
+      newAccount.deposit(500);
+      expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250' + '\n' + '12/1/2021 || 500 || || 750')
     })
-
-
   });
-
-
 });
