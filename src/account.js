@@ -26,6 +26,10 @@ class Account {
     this.#addTransactionToHistory();
   }
 
+  printStatement() {
+    return this.getTransactionHistory()[0].getDate();
+  }
+
   #addTransactionToHistory() {
     let depositTransaction = new Transaction();
     return this.transactionHistory.push(depositTransaction);

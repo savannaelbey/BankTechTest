@@ -3,8 +3,8 @@
 describe('Account class', function () {
   let myAccount;
 
-  beforeEach(function() {
-    myAccount = new Account()
+  beforeEach(function () {
+    myAccount = new Account();
   });
 
   describe('deposit(amount) method', function () {
@@ -38,6 +38,17 @@ describe('Account class', function () {
       expect(myAccount.getTransactionHistory().length).toEqual(2);
       expect(myAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
     });
+  });
+
+  describe('printStatement method', function () {
+    it('includes the transaction date', function () {
+      myAccount;
+      myAccount.deposit(500);
+      let date = myAccount.getTransactionHistory()[0].getDate();
+      expect(myAccount.printStatement()).toEqual(date);
+    });
+
+    
   });
 
 
