@@ -2,7 +2,6 @@
 
 describe('Account class', function () {
   let newAccount;
-  let deposit500Pounds;
 
   beforeEach(function () {
     newAccount = new Account();
@@ -61,8 +60,7 @@ describe('Account class', function () {
     it('shows the transaction date', function () {
       newAccount;
       newAccount.deposit(500);
-      let date = newAccount.getTransactionHistory()[0].getDate();
-      expect(newAccount.printStatement()).toContain(date);
+      expect(newAccount.printStatement()).toContain('13/1/2021');
     });
 
     it('shows deposited amount', function () {
@@ -92,13 +90,13 @@ describe('Account class', function () {
     it('outputs all the data of a deposit transaction in the correct format', function () {
       newAccount;
       newAccount.deposit(500);
-      expect(newAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' );
+      expect(newAccount.printStatement()).toContain('13/1/2021 || 500 || || 500' );
     });
 
     it('outputs all the data of a withdrawal transaction in the correct format', function () {
       newAccount;
       newAccount.withdraw(250);
-      expect(newAccount.printStatement()).toContain('12/1/2021 || || 250 || -250');
+      expect(newAccount.printStatement()).toContain('13/1/2021 || || 250 || -250');
     });
 
     it('shows a column header', function () {
@@ -111,7 +109,7 @@ describe('Account class', function () {
       newAccount;
       newAccount.deposit(500);
       newAccount.withdraw(250);
-      expect(newAccount.printStatement()).toContain('12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250');
+      expect(newAccount.printStatement()).toContain('13/1/2021 || 500 || || 500' + '\n' + '13/1/2021 || || 250 || 250');
     });
 
     it('shows the statement in the required format', function () {
@@ -119,7 +117,7 @@ describe('Account class', function () {
       newAccount.deposit(500);
       newAccount.withdraw(250);
       newAccount.deposit(500);
-      expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '12/1/2021 || 500 || || 500' + '\n' + '12/1/2021 || || 250 || 250' + '\n' + '12/1/2021 || 500 || || 750')
+      expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500 || || 500' + '\n' + '13/1/2021 || || 250 || 250' + '\n' + '13/1/2021 || 500 || || 750')
     })
   });
 });

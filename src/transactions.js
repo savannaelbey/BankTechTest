@@ -7,7 +7,6 @@ class Transaction {
     this.type = ''
     this.amount = 0
     this.postTransBalance = 0
-
   }
 
   getDate() {
@@ -30,7 +29,5 @@ class Transaction {
     let month = this.date.getUTCMonth() + 1;
     let year = this.date.getUTCFullYear();
     return day + '/' + month + '/' + year;
-
   }
-
 }
