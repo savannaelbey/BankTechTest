@@ -27,12 +27,16 @@ class Account {
   }
 
   printStatement() {
-    let output = ['date || credit || debit || balance']
+    let columnHeader = 'date || credit || debit || balance';
+    let output = [columnHeader];
     for (let i = 0; i < this.transactionHistory.length; i++) {
-      if (this.getTransactionHistory()[i].getType() === 'credit') {
-        output.push(this.getTransactionHistory()[i].getDate() + ' || ' + this.getTransactionHistory()[i].getAmount() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[i].getPostTransBalance());
-      } else if (this.getTransactionHistory()[i].getType() === 'debit') {
-        output.push(this.getTransactionHistory()[i].getDate() + ' ||' + ' ' + '|| ' + this.getTransactionHistory()[i].getAmount() + ' || ' + this.getTransactionHistory()[i].getPostTransBalance());
+      let transDate = this.getTransactionHistory()[i].getDate();
+      let transAmount = this.getTransactionHistory()[i].getAmount();
+      let transBalance = this.getTransactionHistory()[i].getPostTransBalance();
+      if (this.#isCreditTrans(i)) {
+        output.push(transDate + ' || ' + transAmount + ' ||' + ' ' + '|| ' + transBalance);
+      } else if (this.#isDebitTrans(i)) {
+        output.push(transDate + ' ||' + ' ' + '|| ' + transAmount + ' || ' + transBalance);
       }
     }
     return output.join('\n');
@@ -45,4 +49,13 @@ class Account {
     newTrans.postTransBalance = this.balance;
     return this.transactionHistory.push(newTrans);
   }
+
+  #isCreditTrans(index) {
+    return this.getTransactionHistory()[index].getType() === 'credit';
+  }
+
+  #isDebitTrans(index) {
+    return this.getTransactionHistory()[index].getType() === 'debit';
+  }
+
 }
