@@ -37,12 +37,16 @@ As a customer,
 I want the date and amount of my transactions as well as the balance to show on my statement,
 So that I can trace back my spending.
 ```
-## Design Approach
+## Class Diagram
+![Screenshot 2021-01-13 at 02 24 42](https://user-images.githubusercontent.com/71889577/104398378-81484180-5546-11eb-8052-d73f14fee8be.png)
+
 
 ## Installing and running the app and tests
 
 ## Dependencies
 
 ## App screenshots
+<img width="371" alt="Screenshot 2021-01-13 at 02 31 05" src="https://user-images.githubusercontent.com/71889577/104398830-662a0180-5547-11eb-97a9-83603ed56f8f.png">
+
 
 ## Possible extentions
