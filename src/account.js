@@ -18,20 +18,12 @@ class Account {
 
   deposit(amount) {
     this.balance += amount;
-    let newDTrans = new Transaction();
-    newDTrans.type = 'credit';
-    newDTrans.amount = amount;
-    newDTrans.postTransBalance = this.balance;
-    return this.transactionHistory.push(newDTrans);
+    this.#createNewTrans('credit', amount);
   }
 
   withdraw(amount) {
     this.balance -= amount;
-    let newWTrans = new Transaction();
-    newWTrans.type = 'debit';
-    newWTrans.amount = amount;
-    newWTrans.postTransBalance = this.balance;
-    return this.transactionHistory.push(newWTrans);
+    this.#createNewTrans('debit', amount);
   }
 
   printStatement() {
@@ -44,5 +36,13 @@ class Account {
       }
     }
     return output.join('\n');
+  }
+
+  #createNewTrans(type, amount) {
+    let newTrans = new Transaction();
+    newTrans.type = type;
+    newTrans.amount = amount;
+    newTrans.postTransBalance = this.balance;
+    return this.transactionHistory.push(newTrans);
   }
 }
