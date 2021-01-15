@@ -113,7 +113,7 @@ describe('Account class', function () {
       newAccount;
       newAccount.deposit(500);
       newAccount.withdraw(250);
-      expect(newAccount.printStatement()).toContain('13/1/2021 || 500 || || 500' + '\n' + '13/1/2021 || || 250 || 250');
+      expect(newAccount.printStatement()).toContain('13/1/2021 || || 250 || 250' + '\n' + '13/1/2021 || 500 || || 500');
     });
 
     it('shows the statement in the required format', function () {
@@ -121,7 +121,7 @@ describe('Account class', function () {
       newAccount.deposit(500);
       newAccount.withdraw(250);
       newAccount.deposit(500);
-      expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500 || || 500' + '\n' + '13/1/2021 || || 250 || 250' + '\n' + '13/1/2021 || 500 || || 750')
+      expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500 || || 750' + '\n' + '13/1/2021 || || 250 || 250' + '\n' + '13/1/2021 || 500 || || 500')
     })
   });
 });
