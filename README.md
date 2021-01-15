@@ -41,7 +41,58 @@ So that I can trace back my spending.
 ![Screenshot 2021-01-13 at 02 24 42](https://user-images.githubusercontent.com/71889577/104398378-81484180-5546-11eb-8052-d73f14fee8be.png)
 
 
-## Installing and running the app and tests
+## Installing and running the app
+Clone the current repository:
+```
+$ git clone https://github.com/savannaelbey/BankTechTest.git 
+```
+
+Go into your locally cloned repository:
+```
+$ cd BankTechTest
+```
+Install all the required packages:
+```
+$ npm install
+``` 
+Run Node from the command line:
+```
+$ node
+```
+Require the file containing the Account class:
+```
+$ const Account = require('./lib/Account')
+```
+Create an instance of the Account class:
+```
+$ let myAccount = new Account();
+```
+To deposit money(i.e £1000) into the account:
+```
+$ myAccount.deposit(1000);
+```
+To withdraw money(i.e £500) from the account:
+```
+$ myAccount.withdraw(500);
+```
+To check the current balance:
+```
+$ myAccount.getBalance();
+```
+To print the account statement:
+```
+$ myAccount.printStatement();
+```
+
+## Running the tests
+To run the tests from the command line:
+```
+$ jasmine
+```
+To check test coverage:
+```
+$ npm test
+```
 
 ## Dependencies
 
