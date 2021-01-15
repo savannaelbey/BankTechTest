@@ -1,7 +1,6 @@
-# The Bank App
+# The Bank App Tech Test
 
-
-######
+The aim of this project is to produce a command line application that is easily readable, maintainable, and extendable using the SOLID principles of OOD and TDD. 
 
 ## Requirments
 
