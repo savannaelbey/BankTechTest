@@ -1,6 +1,6 @@
 # The Bank App Tech Test
 
-The aim of this project is to produce a command line application that is easily readable, maintainable, and extendable using the SOLID principles of OOD and TDD. 
+The aim of this project is to produce a command line application that is easily readable, maintainable, and extendable using TDD and the SOLID principles of OOD. 
 
 ## Requirments
 
@@ -87,10 +87,6 @@ $ myAccount.printStatement();
 To run the tests from the command line:
 ```
 $ jasmine
-```
-To check test coverage:
-```
-$ npm test
 ```
 
 ## Dependencies
