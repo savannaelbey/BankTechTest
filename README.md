@@ -6,7 +6,7 @@ The aim of this project is to produce a command line application that is easily 
 
 * Allows Deposits
 * Allows Withdrawals
-* Print statements
+* Prints statements
 
 ## Acceptance criteria
 
