@@ -1,5 +1,7 @@
 'use strict';
 
+const Transaction = require("../lib/transactions")
+
 describe('Transaction', function () {
   let myTrans;
 

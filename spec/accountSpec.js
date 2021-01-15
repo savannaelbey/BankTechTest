@@ -1,5 +1,9 @@
 'use strict';
 
+
+const Account = require("../lib/account")
+const Transaction = require("../lib/transactions")
+
 describe('Account class', function () {
   let newAccount;
 
