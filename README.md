@@ -16,6 +16,13 @@ The aim of this project is to produce a command line application that is easily 
 **When** she prints her bank statement<br />
 **Then** she would see:
 
+```
+date || credit || debit || balance
+14/1/2012 ||  || 500.00 || 2500.00
+13/1/2012 || 2000.00 ||  || 3000.00
+10/1/2012 || 1000.00 ||  || 1000.00
+```
+
 
 ## User Stories
 
@@ -37,8 +44,7 @@ I want the date and amount of my transactions as well as the balance to show on 
 So that I can trace back my spending.
 ```
 ## Class Diagram
-![Screenshot 2021-01-13 at 02 24 42](https://user-images.githubusercontent.com/71889577/104398378-81484180-5546-11eb-8052-d73f14fee8be.png)
-
+![Screenshot 2021-01-17 at 23 48 30](https://user-images.githubusercontent.com/71889577/104859623-99410c00-591e-11eb-8bc4-b37a22d2b6c5.png)
 
 ## Installing and running the app
 Clone the current repository:
