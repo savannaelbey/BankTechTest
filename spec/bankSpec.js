@@ -58,7 +58,7 @@ class TransactionDouble {
 describe('Bank', function () {
   let bank;
   let account;
-  let transaction;
+
   let date;
 
   beforeEach(function () {
@@ -66,7 +66,7 @@ describe('Bank', function () {
     jasmine.clock().install();
     date = new Date(2021, 0, 13);
     jasmine.clock().mockDate(date);
-    transaction = new TransactionDouble(date);
+
     bank = new Bank(account)
   });
 
@@ -74,52 +74,56 @@ describe('Bank', function () {
     jasmine.clock().uninstall();
   });
 
-  /*it('prints the account statement in the required format', function () {
-
-    expect(bank.printStatement(account)).toEqual
-  });
-  */
   describe('printStatement(account) method', function () {
     it('shows the transaction date', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(500, transaction);
       expect(bank.printStatement(account)).toContain('13/1/2021');
     });
 
     it('shows deposited amount', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(500, transaction);
       expect(bank.printStatement(account)).toContain('500');
     });
 
     it('shows withdrawn amount', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.withdraw(250, transaction);
       expect(bank.printStatement(account)).toContain('250');
     });
 
     it('shows balance after amount is deposited', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(500, transaction);
-      account.deposit(250, transaction);
+      let transaction2 = new TransactionDouble(date);
+      account.deposit(250, transaction2);
       expect(bank.printStatement(account)).toContain(750);
     });
 
     it('shows remaining balance after amount is withdrawn', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(1000, transaction);
-      account.withdraw(250, transaction);
+      let transaction2 = new TransactionDouble(date);
+      account.withdraw(250, transaction2);
       expect(bank.printStatement(account)).toContain(750);
     });
 
     it('outputs all the data of a deposit transaction in the correct format', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(500, transaction);
       expect(bank.printStatement(account)).toContain('13/1/2021 || 500.00 ||  || 500.00' );
     });
 
     it('outputs all the data of a withdrawal transaction in the correct format', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.withdraw(250, transaction);
       expect(bank.printStatement(account)).toContain('13/1/2021 ||  || 250.00 || -250.00');
     });
@@ -131,17 +135,22 @@ describe('Bank', function () {
 
     it('shows the details of each of the transactions in the account transaction history in the correct order', function() {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(400, transaction);
-      account.withdraw(100, transaction);
-      expect(bank.printStatement(account)).toContain('13/1/2021 ||  || 100.00 || 300.00' + '\n' + '13/1/2021 || 400.00 || || 400.00');
+      let transaction2 = new TransactionDouble(date);
+      account.withdraw(100, transaction2);
+      expect(bank.printStatement(account)).toContain('13/1/2021 ||  || 100.00 || 300.00' + '\n' + '13/1/2021 || 400.00 ||  || 400.00');
     });
 
     it('shows the statement in the required format', function () {
       account;
+      let transaction = new TransactionDouble(date);
       account.deposit(500, transaction);
-      account.withdraw(250, transaction);
-      account.deposit(500, transaction);
-      expect(bank.printStatement(account)).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500.00 || || 750.00' + '\n' + '13/1/2021 || || 250.00 || 250.00' + '\n' + '13/1/2021 || 500.00 || || 500.00')
+      let transaction2 = new TransactionDouble(date);
+      account.withdraw(250, transaction2);
+      let transaction3 = new TransactionDouble(date);
+      account.deposit(500, transaction3);
+      expect(bank.printStatement(account)).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500.00 ||  || 750.00' + '\n' + '13/1/2021 ||  || 250.00 || 250.00' + '\n' + '13/1/2021 || 500.00 ||  || 500.00')
     });
   });
 });
