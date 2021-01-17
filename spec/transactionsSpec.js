@@ -1,19 +1,26 @@
 'use strict';
 
-const Transaction = require("../lib/transactions")
+const Transaction = require('../lib/transactions')
 
 describe('Transaction', function () {
   let myTrans;
+  let date;
 
   beforeEach(function () {
-    myTrans = new Transaction();
+    jasmine.clock().install();
+    date = new Date(2021, 0, 13);
+    jasmine.clock().mockDate(date);
+    myTrans = new Transaction(date);
+  });
+
+  afterEach(function () {
+    jasmine.clock().uninstall();
   });
 
   describe('getDate method', function () {
     it('shows the date the transaction was made', function () {
       myTrans;
-      expect(myTrans.getDate()).toEqual('13/1/2021');
-
+      expect(myTrans.formatDate()).toEqual('13/1/2021');
     });
   });
 
