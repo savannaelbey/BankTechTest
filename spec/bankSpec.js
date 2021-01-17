@@ -12,10 +12,11 @@ describe('Bank', function () {
 
   beforeEach(function () {
     accountDouble = new AccountDouble();
+    bank = new Bank(accountDouble)
+    //mock date
     jasmine.clock().install();
     date = new Date(2021, 0, 13);
     jasmine.clock().mockDate(date);
-    bank = new Bank(accountDouble)
   });
 
   afterEach(function () {
