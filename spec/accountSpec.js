@@ -9,7 +9,6 @@ describe('Account class', function () {
 
   beforeEach(function () {
     newAccount = new Account();
-
   });
 
   describe('deposit(amount) method', function () {
@@ -19,12 +18,11 @@ describe('Account class', function () {
       expect(newAccount.getBalance()).toEqual(500);
     });
 
-    it('adds an instance of transaction to the transaction history', function () {
+    it('adds a new transaction to the transaction history', function () {
       newAccount;
       expect(newAccount.getTransactionHistory().length).toEqual(0);
       newAccount.deposit(500);
       expect(newAccount.getTransactionHistory().length).toEqual(1);
-      expect(newAccount.getTransactionHistory()[0]).toBeInstanceOf(Transaction);
     });
 
     it("changes the type of the transaction instance to 'credit'", function () {
@@ -42,12 +40,11 @@ describe('Account class', function () {
       expect(newAccount.getBalance()).toEqual(250);
     });
 
-    it('adds an instance of transaction to the transaction history', function () {
+    it('adds an new transaction to the transaction history', function () {
       newAccount;
       newAccount.deposit(500);
       newAccount.withdraw(250);
       expect(newAccount.getTransactionHistory().length).toEqual(2);
-      expect(newAccount.getTransactionHistory()[1]).toBeInstanceOf(Transaction);
     });
 
     it("changes the type of the transaction instance to 'debit'", function () {
@@ -56,8 +53,6 @@ describe('Account class', function () {
       newAccount.withdraw(250);
       expect(newAccount.getTransactionHistory()[1].getType()).toEqual('debit');
     });
-
-
   });
 
   describe('printStatement method', function () {
@@ -122,6 +117,6 @@ describe('Account class', function () {
       newAccount.withdraw(250);
       newAccount.deposit(500);
       expect(newAccount.printStatement()).toEqual('date || credit || debit || balance' + '\n' + '13/1/2021 || 500.00 || || 750.00' + '\n' + '13/1/2021 || || 250.00 || 250.00' + '\n' + '13/1/2021 || 500.00 || || 500.00')
-    })
+    });
   });
 });
