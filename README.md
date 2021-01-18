@@ -44,7 +44,7 @@ I want the date and amount of my transactions as well as the balance to show on 
 So that I can trace back my spending.
 ```
 ## Class Diagram
-![Screenshot 2021-01-17 at 23 48 30](https://user-images.githubusercontent.com/71889577/104859623-99410c00-591e-11eb-8bc4-b37a22d2b6c5.png)
+![Screenshot 2021-01-18 at 00 06 46](https://user-images.githubusercontent.com/71889577/104860034-3309b880-5921-11eb-953a-22ed6e17202e.png)
 
 ## Installing and running the app
 Clone the current repository:
@@ -64,29 +64,29 @@ Run Node from the command line:
 ```
 $ node
 ```
-Require the file containing the Account class:
+Require the file containing the Bank class:
 ```
-$ const Account = require('./lib/Account')
+$ const Bank = require('./lib/bank')
 ```
-Create an instance of the Account class:
+Create an instance of the Bank class:
 ```
-$ let myAccount = new Account();
+$ let myBank = new Bank();
 ```
 To deposit money(i.e £1000) into the account:
 ```
-$ myAccount.deposit(1000);
+$ myBank.getAccount().deposit(1000);
 ```
 To withdraw money(i.e £500) from the account:
 ```
-$ myAccount.withdraw(500);
+$ myBank.getAccount().withdraw(500);
 ```
 To check the current balance:
 ```
-$ myAccount.getBalance();
+$ myBank.getAccount().getBalance();
 ```
 To print the account statement:
 ```
-$ myAccount.printStatement();
+$ console.log(myBank.printStatement());
 ```
 
 ## Running the tests
@@ -96,9 +96,13 @@ $ jasmine
 ```
 
 ## Dependencies
+Node.js
+jasmine
 
 ## App screenshots
-<img width="371" alt="Screenshot 2021-01-13 at 02 31 05" src="https://user-images.githubusercontent.com/71889577/104398830-662a0180-5547-11eb-97a9-83603ed56f8f.png">
+![Screenshot 2021-01-18 at 00 13 31](https://user-images.githubusercontent.com/71889577/104860171-01ddb800-5922-11eb-9b21-ca381fa7f3e6.png)
+
+![Screenshot 2021-01-18 at 00 14 25](https://user-images.githubusercontent.com/71889577/104860204-23d73a80-5922-11eb-9946-5828aa6492ae.png)
 
 
 ## Possible extentions
