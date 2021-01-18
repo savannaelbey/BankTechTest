@@ -104,5 +104,10 @@ jasmine
 
 ![Screenshot 2021-01-18 at 00 14 25](https://user-images.githubusercontent.com/71889577/104860204-23d73a80-5922-11eb-9946-5828aa6492ae.png)
 
+## Improvements
+* Add test coverage
+* Add feature tests
 
 ## Possible extentions
+* Add edge cases( i.e throw error if input is not an integer and if user attempts to withdraw money when there are insufficient funds)
+* Add confirmation messages when user deposits/withdraws money
