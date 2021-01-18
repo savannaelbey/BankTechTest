@@ -27,21 +27,42 @@ date || credit || debit || balance
 ## User Stories
 
 ```
-As a customer,
-I want to be able to deposit a specified amount of money into my bank account,
-So that I can save money.
+As an account holder,
+I want to be able to deposit a specified amount,
+So that I can put money into my account for safe keeping.
 
-As a customer,
-I want to be able to withdraw a specified amount of money from my bank account,
-so that I can spend money.
+As an account holder,
+I want to be able to withdraw a specified amount,
+So that I can take money from my account when I need it.
 
-As a customer,
-I want to be able to able to print my statement,
-so that I can track my spending.
+As an account holder,
+I want to be able to see my balance,
+So that I know how much money I have in my account.
 
-As a customer,
-I want the date and amount of my transactions as well as the balance to show on my statement,
-So that I can trace back my spending.
+As an account holder,
+I want to print a statement of all transactions in my account,
+So that I can view the history of my deposits and withdrawals.
+
+As an account holder,
+I want my statement to print the transactions in reverse chronological order,
+So that I can easily follow the transactions when reading.
+
+As an account holder,
+I want my statement to show a running balanceo with each transaction,
+So that I can see what my account balance was at that time.
+
+As an account holder,
+I want my statement to show the date of each transaction,
+So that I know when that transaction was made.
+
+As an account holder,
+I want my statement to show the amount of each transaction, 
+So that I know how much has been deposited and/or withdrawn.
+
+As an account holder,
+I want all statements to have columns for date, credit, debit and balance,
+So that the format is standard regardless of the transactions.
+
 ```
 ## Class Diagram
 ![Screenshot 2021-01-18 at 00 06 46](https://user-images.githubusercontent.com/71889577/104860034-3309b880-5921-11eb-953a-22ed6e17202e.png)
