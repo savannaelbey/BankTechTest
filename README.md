@@ -96,7 +96,7 @@ $ jasmine
 ```
 
 ## Dependencies
-Node.js
+Node.js<br />
 jasmine
 
 ## App screenshots
