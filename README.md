@@ -28,11 +28,11 @@ date || credit || debit || balance
 
 ```
 As a customer,
-I want to be able to deposit money into my bank account,
-So that I can sava money.
+I want to be able to deposit a specified amount of money into my bank account,
+So that I can save money.
 
 As a customer,
-I want to be able to withdraw money from my bank account,
+I want to be able to withdraw a specified amount of money from my bank account,
 so that I can spend money.
 
 As a customer,
@@ -52,7 +52,8 @@ Clone the current repository:
 $ git clone https://github.com/savannaelbey/BankTechTest.git 
 ```
 
-Go into your locally cloned repository:
+Navigate to the directory:
+
 ```
 $ cd BankTechTest
 ```
