@@ -2,7 +2,7 @@
 
 The aim of this project is to produce a command line application that is easily readable, maintainable, and extensible using TDD and the SOLID principles of OOD. 
 
-## Requirments
+## Requirements
 
 * Allows Deposits
 * Allows Withdrawals
